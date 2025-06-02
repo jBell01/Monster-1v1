@@ -7,15 +7,6 @@
 /**
  * Global variables
  */
-// Event handlers
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    showSprite(sprites.create(list._pickRandom(), SpriteKind.Player))
-})
-// Functions
-function showSprite (mySprite: Sprite) {
-    mySprite.setPosition(randint(0, scene.screenWidth() - 8), randint(0, scene.screenHeight() - 8))
-}
-let list: Image[] = []
 tiles.setCurrentTilemap(tilemap`level2`)
 let player1 = sprites.create(img`
     . . . . . . f f f f . . . . . . 
@@ -35,10 +26,3 @@ let player1 = sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
-// Main program
-list = [
-assets.image`myCat`,
-assets.image`mySnake`,
-assets.image`myShroom`,
-assets.image`myDonut`
-]

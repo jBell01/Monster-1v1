@@ -1,3 +1,6 @@
+/**
+ * Namespaces
+ */
 namespace SpriteKind {
     export const snake = SpriteKind.create()
     export const skeleton = SpriteKind.create()

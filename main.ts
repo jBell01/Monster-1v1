@@ -1,9 +1,21 @@
+namespace SpriteKind {
+    export const snake = SpriteKind.create()
+    export const skeleton = SpriteKind.create()
+    export const bat = SpriteKind.create()
+}
 /**
  * Constant variables
  */
 /**
  * Classes
  */
+sprites.onOverlap(SpriteKind.Player, SpriteKind.bat, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite)
+    sprites.destroy(skeleton)
+    sprites.destroy(snake)
+    batSpawn()
+    game.splash("You are now fighting bat!")
+})
 function snakeSpawn () {
     snake = sprites.create(img`
         . . . . c c c c c c . . . . . . 
@@ -22,7 +34,7 @@ function snakeSpawn () {
         f 6 1 1 1 1 1 6 6 6 6 6 c f . . 
         . f 6 1 1 1 1 1 1 6 6 6 f . . . 
         . . c c c c c c c c c f . . . . 
-        `, SpriteKind.Enemy)
+        `, SpriteKind.snake)
     tiles.placeOnRandomTile(snake, sprites.castle.tileGrass2)
     characterAnimations.loopFrames(
     snake,
@@ -65,6 +77,20 @@ function snakeSpawn () {
     characterAnimations.rule(Predicate.NotMoving)
     )
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.skeleton, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite)
+    sprites.destroy(bat)
+    sprites.destroy(snake)
+    skeletonSpawn()
+    game.splash("You are now fighting skeleton!")
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.snake, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite)
+    sprites.destroy(skeleton)
+    sprites.destroy(bat)
+    snakeSpawn()
+    game.splash("You are now fightng snake!")
+})
 function batSpawn () {
     bat = sprites.create(img`
         . . f f f . . . . . . . . f f f 
@@ -83,7 +109,7 @@ function batSpawn () {
         . f b b b b b b b b c f . . . . 
         . . f b b b b b b c f . . . . . 
         . . . f f f f f f f . . . . . . 
-        `, SpriteKind.Enemy)
+        `, SpriteKind.bat)
     tiles.placeOnRandomTile(bat, sprites.castle.tileGrass2)
     characterAnimations.loopFrames(
     bat,
@@ -186,7 +212,7 @@ function skeletonSpawn () {
         ........................
         ........................
         ........................
-        `, SpriteKind.Enemy)
+        `, SpriteKind.skeleton)
     tiles.placeOnRandomTile(skeleton, sprites.castle.tileGrass2)
     characterAnimations.loopFrames(
     skeleton,
@@ -298,9 +324,6 @@ function skeletonSpawn () {
 function fightEnemy () {
 	
 }
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    fightEnemy()
-})
 let skeleton: Sprite = null
 let snake: Sprite = null
 let bat: Sprite = null

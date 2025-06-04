@@ -377,3 +377,8 @@ if (snake.overlapsWith(skeleton) || snake.overlapsWith(bat)) {
     sprites.destroy(snake)
     snakeSpawn()
 }
+game.onUpdateInterval(500, function () {
+    if (fightingSnake == true || (fightingBat == true || fightingSkeleton == true)) {
+    	
+    }
+})

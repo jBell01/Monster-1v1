@@ -4,6 +4,14 @@ namespace SpriteKind {
     export const bat = SpriteKind.create()
 }
 /**
+ * Namespaces
+ */
+namespace SpriteKind {
+    export const snake = SpriteKind.create()
+    export const skeleton = SpriteKind.create()
+    export const bat = SpriteKind.create()
+}
+/**
  * Constant variables
  */
 sprites.onOverlap(SpriteKind.Player, SpriteKind.bat, function (sprite, otherSprite) {
@@ -11,13 +19,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.bat, function (sprite, otherSpri
     sprites.destroy(skeleton)
     sprites.destroy(snake)
     batSpawn()
-    tiles.setCurrentTilemap(tilemap`level3`)
-    game.splash("You are now fighting bat!")
-    player1.setPosition(20, 62)
-    bat.setPosition(120, 62)
-    fightingBat = true
-    statusbar = statusbars.create(20, 4, StatusBarKind.Health)
-    statusbar.attachToSprite(bat)
 })
 function snakeSpawn () {
     snake = sprites.create(img`
@@ -85,45 +86,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.skeleton, function (sprite, othe
     sprites.destroy(bat)
     sprites.destroy(snake)
     skeletonSpawn()
-    tiles.setCurrentTilemap(tilemap`level3`)
-    game.splash("You are now fighting skeleton!")
-    player1.setPosition(20, 62)
-    skeleton.setPosition(120, 62)
-    fightingSkeleton = true
-    statusbar = statusbars.create(20, 4, StatusBarKind.Health)
-    statusbar.attachToSprite(skeleton)
-})
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.snake, function (sprite, otherSprite) {
-    statusbar.value += -2
-})
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.skeleton, function (sprite, otherSprite) {
-    statusbar.value += -2
-})
-statusbars.onZero(StatusBarKind.Health, function (status) {
-    sprites.destroyAllSpritesOfKind(SpriteKind.bat)
-    sprites.destroyAllSpritesOfKind(SpriteKind.snake)
-    sprites.destroyAllSpritesOfKind(SpriteKind.skeleton)
-    game.gameOver(true)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.snake, function (sprite, otherSprite) {
     sprites.destroy(otherSprite)
     sprites.destroy(skeleton)
     sprites.destroy(bat)
     snakeSpawn()
-    tiles.setCurrentTilemap(tilemap`level3`)
-    game.splash("You are now fightng snake!")
-    player1.setPosition(20, 62)
-    snake.setPosition(120, 62)
-    fightingSnake = true
-    statusbar = statusbars.create(20, 4, StatusBarKind.Health)
-    statusbar.attachToSprite(snake)
-})
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.bat, function (sprite, otherSprite) {
-    statusbar.value += -2
-})
-/**
- * Classes
- */
 function batSpawn () {
     bat = sprites.create(img`
         . . f f f . . . . . . . . f f f 
@@ -357,11 +325,6 @@ function skeletonSpawn () {
 function fightEnemy () {
 	
 }
-let knightBullet: Sprite = null
-let fightingSnake = false
-let fightingSkeleton = false
-let statusbar: StatusBarSprite = null
-let fightingBat = false
 let skeleton: Sprite = null
 let snake: Sprite = null
 let bat: Sprite = null

@@ -16,6 +16,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.bat, function (sprite, otherSpri
     player1.setPosition(20, 55)
     bat.setPosition(120, 55)
     fightingBat = true
+    statusbar = statusbars.create(20, 4, StatusBarKind.Health)
+    statusbar.attachToSprite(bat)
 })
 function snakeSpawn () {
     snake = sprites.create(img`
@@ -88,6 +90,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.skeleton, function (sprite, othe
     player1.setPosition(20, 55)
     skeleton.setPosition(120, 55)
     fightingSkeleton = true
+    statusbar = statusbars.create(20, 4, StatusBarKind.Health)
+    statusbar.attachToSprite(skeleton)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.snake, function (sprite, otherSprite) {
     sprites.destroy(otherSprite)
@@ -99,6 +103,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.snake, function (sprite, otherSp
     player1.setPosition(20, 55)
     snake.setPosition(120, 55)
     fightingSnake = true
+    statusbar = statusbars.create(20, 4, StatusBarKind.Health)
+    statusbar.attachToSprite(snake)
 })
 /**
  * Classes
@@ -333,8 +339,10 @@ function skeletonSpawn () {
     characterAnimations.rule(Predicate.NotMoving)
     )
 }
+let knightBullet: Sprite = null
 let fightingSnake = false
 let fightingSkeleton = false
+let statusbar: StatusBarSprite = null
 let fightingBat = false
 let skeleton: Sprite = null
 let snake: Sprite = null
@@ -379,6 +387,23 @@ if (snake.overlapsWith(skeleton) || snake.overlapsWith(bat)) {
 }
 game.onUpdateInterval(500, function () {
     if (fightingSnake == true || (fightingBat == true || fightingSkeleton == true)) {
-    	
+        knightBullet = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . f f f f f f f f f . . . 
+            . . . f 2 2 2 2 2 2 2 2 2 f . . 
+            . . . f 2 4 2 4 2 4 2 4 2 f . . 
+            . . . f 2 2 2 2 2 2 2 2 2 f . . 
+            . . . . f f f f f f f f f . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, player1, 100, 0)
     }
 })

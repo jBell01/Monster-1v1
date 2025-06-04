@@ -1,6 +1,3 @@
-/**
- * Namespaces
- */
 namespace SpriteKind {
     export const snake = SpriteKind.create()
     export const skeleton = SpriteKind.create()
@@ -9,15 +6,16 @@ namespace SpriteKind {
 /**
  * Constant variables
  */
-/**
- * Classes
- */
 sprites.onOverlap(SpriteKind.Player, SpriteKind.bat, function (sprite, otherSprite) {
     sprites.destroy(otherSprite)
     sprites.destroy(skeleton)
     sprites.destroy(snake)
     batSpawn()
     game.splash("You are now fighting bat!")
+    tiles.setCurrentTilemap(tilemap`level1`)
+    player1.setPosition(20, 55)
+    bat.setPosition(120, 55)
+    fightingBat = true
 })
 function snakeSpawn () {
     snake = sprites.create(img`
@@ -86,6 +84,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.skeleton, function (sprite, othe
     sprites.destroy(snake)
     skeletonSpawn()
     game.splash("You are now fighting skeleton!")
+    tiles.setCurrentTilemap(tilemap`level1`)
+    player1.setPosition(20, 55)
+    skeleton.setPosition(120, 55)
+    fightingSkeleton = true
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.snake, function (sprite, otherSprite) {
     sprites.destroy(otherSprite)
@@ -93,7 +95,14 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.snake, function (sprite, otherSp
     sprites.destroy(bat)
     snakeSpawn()
     game.splash("You are now fightng snake!")
+    tiles.setCurrentTilemap(tilemap`level1`)
+    player1.setPosition(20, 55)
+    snake.setPosition(120, 55)
+    fightingSnake = true
 })
+/**
+ * Classes
+ */
 function batSpawn () {
     bat = sprites.create(img`
         . . f f f . . . . . . . . f f f 
@@ -327,12 +336,16 @@ function skeletonSpawn () {
 function fightEnemy () {
 	
 }
+let fightingSnake = false
+let fightingSkeleton = false
+let fightingBat = false
 let skeleton: Sprite = null
 let snake: Sprite = null
 let bat: Sprite = null
+let player1: Sprite = null
 // Global variables
 tiles.setCurrentTilemap(tilemap`level2`)
-let player1 = sprites.create(img`
+player1 = sprites.create(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f 2 2 f f f . . . . 
     . . . f f f 2 2 2 2 f f f . . . 

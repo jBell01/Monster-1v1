@@ -99,6 +99,12 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.snake, function (sprite, oth
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.skeleton, function (sprite, otherSprite) {
     statusbar.value += -2
 })
+statusbars.onZero(StatusBarKind.Health, function (status) {
+    sprites.destroy(snake)
+    sprites.destroy(bat)
+    sprites.destroy(skeleton)
+    game.gameOver(true)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.snake, function (sprite, otherSprite) {
     sprites.destroy(otherSprite)
     sprites.destroy(skeleton)
@@ -382,6 +388,7 @@ controller.moveSprite(player1)
 batSpawn()
 skeletonSpawn()
 snakeSpawn()
+game.splash("Choose an enemy to fight by running into them!")
 if (bat.overlapsWith(snake) || bat.overlapsWith(skeleton)) {
     sprites.destroy(bat)
     batSpawn()

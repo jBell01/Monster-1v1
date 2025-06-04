@@ -3,40 +3,6 @@ Description: This simple game allows you to select a monster to fight. Once you 
 Running the project: Open the project in MakeCode and use the w, a, s, and d keys to control the player.
 What I learned: This project taught me important skils of problem solving and debugging. It also taught me increadible patience since, at one point, github deleted all my code so I had to remake and rethink through my project. I also developed a deeper understanding of iteration in programs.
 
-
-> Open this page at [https://randychs.github.io/randomsprite/](https://randychs.github.io/randomsprite/)
-
-## Use as Extension
-
-This repository can be added as an **extension** in MakeCode.
-
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/randychs/randomsprite** and import
-
-## Edit this project ![Build status badge](https://github.com/randychs/randomsprite/workflows/MakeCode/badge.svg)
-
-To edit this repository in MakeCode.
-
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
-* click on **Import** then click on **Import URL**
-* paste **https://github.com/randychs/randomsprite** and click import
-
-## Blocks preview
-
-This image shows the blocks code from the last commit in master.
-This image may take a few minutes to refresh.
-
-![A rendered view of the blocks](https://github.com/randychs/randomsprite/raw/master/.github/makecode/blocks.png)
-
-#### Metadata (used for search, rendering)
-
-* for PXT/arcade
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
-
-
-
 > Open this page at [https://jbell01.github.io/final-project/](https://jbell01.github.io/final-project/)
 
 ## Use as Extension

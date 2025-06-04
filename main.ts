@@ -93,6 +93,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.skeleton, function (sprite, othe
     statusbar = statusbars.create(20, 4, StatusBarKind.Health)
     statusbar.attachToSprite(skeleton)
 })
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.snake, function (sprite, otherSprite) {
+    statusbar.value += -2
+})
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.skeleton, function (sprite, otherSprite) {
+    statusbar.value += -2
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.snake, function (sprite, otherSprite) {
     sprites.destroy(otherSprite)
     sprites.destroy(skeleton)
@@ -105,6 +111,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.snake, function (sprite, otherSp
     fightingSnake = true
     statusbar = statusbars.create(20, 4, StatusBarKind.Health)
     statusbar.attachToSprite(snake)
+})
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.bat, function (sprite, otherSprite) {
+    statusbar.value += -2
 })
 /**
  * Classes

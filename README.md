@@ -3,7 +3,7 @@ Description: This simple game allows you to select a monster to fight. Once you 
 Running the project: Open the project in MakeCode and use the w, a, s, and d keys to control the player.
 What I learned: This project taught me important skils of problem solving and debugging. It also taught me increadible patience since, at one point, github deleted all my code so I had to remake and rethink through my project. I also developed a deeper understanding of iteration in programs.
 
-> Open this page at [https://jbell01.github.io/final-project/](https://jbell01.github.io/final-project/)
+> Open this page at [https://github.com/jBell01/Monster-1v1](https://github.com/jBell01/Monster-1v1)
 
 ## Use as Extension
 

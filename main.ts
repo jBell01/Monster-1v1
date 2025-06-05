@@ -114,7 +114,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.snake, function (sprite, otherSp
     tiles.setCurrentTilemap(tilemap`level1`)
     player1.setPosition(20, 55)
     snake.setPosition(120, 55)
-    fightingSnake = true
+    fightingSnake = false
     statusbar = statusbars.create(20, 4, StatusBarKind.Health)
     statusbar.attachToSprite(snake)
 })
